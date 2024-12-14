@@ -46,6 +46,7 @@ class CommentsView: UIView {
                 if success {
                     self.viewModel.startAddingComments { [weak self] in
                         self?.tableView.reloadData()
+                        self?.alignTableViewToBottom()
                         self?.scrollToBottom(animated: true)
                     }
                 } else {
@@ -80,6 +81,27 @@ class CommentsView: UIView {
         tableView.reloadData()
         scrollToBottom(animated: true)
     }
+    
+    private func alignTableViewToBottom(animated: Bool = true) {
+        let contentHeight = tableView.contentSize.height
+        let tableHeight = tableView.bounds.height
+        
+        let newTopInset: CGFloat
+        if contentHeight < tableHeight {
+            newTopInset = tableHeight - contentHeight
+        } else {
+            newTopInset = 64
+        }
+        let newInset = UIEdgeInsets(top: newTopInset, left: 0, bottom: 16, right: 0)
+        if animated {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.tableView.contentInset = newInset
+                self.tableView.layoutIfNeeded()
+            })
+        } else {
+            tableView.contentInset = newInset
+        }
+    }
 }
 
 // MARK: - UI Setup
@@ -97,9 +119,9 @@ extension CommentsView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.bounces = false
-        tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 16, right: 0)
         tableView.showsVerticalScrollIndicator = false
         tableView.register(CommentCell.self, forCellReuseIdentifier: CommentCell.reuseIdentifier)
+        tableView.contentInset = UIEdgeInsets(top: K.Size.commentSectionHeight-16, left: 0, bottom: 16, right: 0)
         addSubview(tableView)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false

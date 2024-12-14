@@ -31,7 +31,7 @@ extension VideoOverlayView {
             commentsView.leadingAnchor.constraint(equalTo: leadingAnchor),
             commentsView.trailingAnchor.constraint(equalTo: trailingAnchor),
             commentsView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            commentsView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
+            commentsView.heightAnchor.constraint(equalToConstant: K.Size.commentSectionHeight),
         ])
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
