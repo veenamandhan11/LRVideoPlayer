@@ -11,7 +11,6 @@ class VideoOverlayView: UIView {
     private let creatorView = VideoCreatorView()
     private let viewsCountView = VideoViewersView()
     private let topicView = VideoTopicView()
-    private let gradientOverlay = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

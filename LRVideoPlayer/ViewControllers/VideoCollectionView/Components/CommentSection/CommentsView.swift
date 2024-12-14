@@ -134,11 +134,15 @@ extension CommentsView {
     }
     
     private func setupTextField() {
+        // Placeholder font and color
         let placeholderAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.white,
+            .foregroundColor: UIColor.white.withAlphaComponent(0.7),
             .font: UIFont.systemFont(ofSize: 12, weight: .regular)
         ]
         textField.attributedPlaceholder = NSAttributedString(string: K.Labels.comment, attributes: placeholderAttributes)
+        
+        // User-entered text font
+        textField.font = UIFont.systemFont(ofSize: 11, weight: .regular)
         
         textField.layer.cornerRadius = 17
         textField.backgroundColor = .commentTextField
