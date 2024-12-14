@@ -28,6 +28,7 @@ class VideoCollectionViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                     self.collectionView.layoutIfNeeded()
+                    self.playMostVisibleCell()
                 }
             } else {
                 print("Failed to load videos.")
@@ -86,6 +87,20 @@ extension VideoCollectionViewController: UICollectionViewDelegate, UICollectionV
         if let cell = cell as? VideoCollectionViewCell {
             cell.pause()
             cell.seekToStart()
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        playMostVisibleCell()
+    }
+    
+    private func playMostVisibleCell() {
+        if let mostVisibleCell = collectionView.getMostVisibleCell() as? VideoCollectionViewCell {
+            if currentPlayingCell !== mostVisibleCell {
+                currentPlayingCell?.pause()
+                mostVisibleCell.play()
+                currentPlayingCell = mostVisibleCell
+            }
         }
     }
 }

@@ -40,8 +40,17 @@ class VideoCollectionViewCell: UICollectionViewCell {
         if let url = URL(string: videoURL) {
             player = AVPlayer(url: url)
             playerLayer?.player = player
-            play()
+            setupLooping()
         }
+    }
+    
+    private func setupLooping() {
+        NotificationCenter.default.addObserver(self, selector: #selector(loopVideo), name: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
+    }
+    
+    @objc private func loopVideo() {
+        seekToStart()
+        play()
     }
     
     func play() {
