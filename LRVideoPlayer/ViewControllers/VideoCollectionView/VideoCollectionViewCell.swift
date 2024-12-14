@@ -53,11 +53,12 @@ class VideoCollectionViewCell: UICollectionViewCell {
     
     @objc private func loopVideo() {
         seekToStart()
-        play()
+        player?.play()
     }
     
     func play() {
         player?.play()
+        overlayView.play()
     }
     
     func pause() {

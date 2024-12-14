@@ -8,6 +8,11 @@
 import UIKit
 
 enum K {
+    static let scenes = UIApplication.shared.connectedScenes
+    static let windowScene = scenes.first as? UIWindowScene
+    static let window = windowScene?.windows.first
+    static let safeAreaInsets = window?.safeAreaInsets
+    
     enum Labels {
         static let comment = "Comment"
         static let follow = "+ Follow"

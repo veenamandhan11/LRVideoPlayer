@@ -13,7 +13,7 @@ protocol CommentsViewDelegate: AnyObject {
 
 class CommentsView: UIView {
     weak var delegate: CommentsViewDelegate?
-    private var viewModel = CommentsViewModel()
+    private var viewModel: CommentsViewModel?
     
     private let tableView = UITableView()
     private let textField = PaddedTextField(padding: UIEdgeInsets(top: 11, left: 11, bottom: 11, right: 11))
@@ -24,7 +24,6 @@ class CommentsView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
-        loadComments()
         registerKeyboardNotifications()
     }
 
@@ -45,11 +44,11 @@ class CommentsView: UIView {
     }
     
     private func loadComments() {
-        viewModel.loadComments { [weak self] success in
+        viewModel?.loadComments { [weak self] success in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 if success {
-                    self.viewModel.startAddingComments { [weak self] in
+                    self.viewModel?.startAddingComments { [weak self] in
                         self?.tableView.reloadData()
                         self?.alignTableViewToBottom()
                         self?.scrollToBottom(animated: true)
@@ -78,7 +77,7 @@ class CommentsView: UIView {
     
     @objc private func didPressSend() {
         guard let text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !text.isEmpty else { return }
-        viewModel.addComment(text)
+        viewModel?.addComment(text)
         
         textField.text = ""
         sendImageView.isHidden = true
@@ -108,22 +107,42 @@ class CommentsView: UIView {
         }
     }
     
-    // MARK: - Public method
+    func resetTableViewInset() {
+        let safeAreaInsetsBottom = K.safeAreaInsets?.bottom ?? 0
+        let textFieldHeight: CGFloat = 34
+        let tableViewBottomInset: CGFloat = 16
+        let tableViewTopInset: CGFloat = 64
+        let maxTop = K.Size.screenHeight - safeAreaInsetsBottom - textFieldHeight - tableViewBottomInset - tableViewTopInset
+        
+        tableView.contentInset = UIEdgeInsets(top: maxTop, left: 0, bottom: tableViewBottomInset, right: 0)
+    }
+    
+    // MARK: - Public methods
+    func play() {
+        if viewModel == nil {
+            viewModel = CommentsViewModel()
+            loadComments()
+        }
+    }
+    
     func reset() {
         textField.text = ""
         sendImageView.isHidden = true
+        resetTableViewInset()
+        viewModel = nil
+        tableView.reloadData()
     }
 }
 
 // MARK: - Table View Delegate
 extension CommentsView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfDisplayedComments()
+        return viewModel?.numberOfDisplayedComments() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommentCell.reuseIdentifier, for: indexPath) as! CommentCell
-        if let comment = viewModel.comment(at: indexPath.row) {
+        if let comment = viewModel?.comment(at: indexPath.row) {
             cell.configure(with: comment)
         }
         return cell
@@ -212,7 +231,7 @@ extension CommentsView {
         tableView.bounces = false
         tableView.showsVerticalScrollIndicator = false
         tableView.register(CommentCell.self, forCellReuseIdentifier: CommentCell.reuseIdentifier)
-        tableView.contentInset = UIEdgeInsets(top: K.Size.commentSectionHeight-16, left: 0, bottom: 16, right: 0)
+        resetTableViewInset()
         addSubview(tableView)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false

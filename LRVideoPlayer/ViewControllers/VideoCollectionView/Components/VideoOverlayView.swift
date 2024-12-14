@@ -28,6 +28,10 @@ class VideoOverlayView: UIView {
         topicView.configure(topic: video.topic)
     }
     
+    func play() {
+        commentsView.play()
+    }
+    
     func reset() {
         creatorView.reset()
         commentsView.reset()
