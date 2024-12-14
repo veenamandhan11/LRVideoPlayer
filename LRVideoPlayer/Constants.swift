@@ -13,6 +13,11 @@ enum K {
         static let follow = "+ Follow"
     }
     
+    enum Errors {
+        static let failedToLoadVideos = "Failed to load videos"
+        static let failedToLoadComments = "Failed to load comments"
+    }
+    
     enum Size {
         static let screenBounds = UIScreen.main.bounds
         static let screenWidth = screenBounds.width

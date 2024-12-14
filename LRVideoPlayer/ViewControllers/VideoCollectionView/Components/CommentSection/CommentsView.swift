@@ -7,7 +7,12 @@
 
 import UIKit
 
+protocol CommentsViewDelegate: AnyObject {
+    func showToastMessage(_ message: String)
+}
+
 class CommentsView: UIView {
+    weak var delegate: CommentsViewDelegate?
     private let viewModel = CommentsViewModel()
     
     private let tableView = UITableView()
@@ -50,7 +55,7 @@ class CommentsView: UIView {
                         self?.scrollToBottom(animated: true)
                     }
                 } else {
-                    print("Failed to load comments.")
+                    self.delegate?.showToastMessage(K.Errors.failedToLoadComments)
                 }
             }
         }

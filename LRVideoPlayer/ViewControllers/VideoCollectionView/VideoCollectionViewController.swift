@@ -31,7 +31,7 @@ class VideoCollectionViewController: UIViewController {
                     self.playMostVisibleCell()
                 }
             } else {
-                print("Failed to load videos.")
+                self.showToast(K.Errors.failedToLoadVideos)
             }
         }
     }

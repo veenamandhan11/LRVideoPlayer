@@ -32,6 +32,7 @@
 		164A4FC22D0E068400D0D97D /* VideoCreatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A4FC12D0E068400D0D97D /* VideoCreatorView.swift */; };
 		164A4FC62D0E178200D0D97D /* VideoViewersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A4FC52D0E178200D0D97D /* VideoViewersView.swift */; };
 		164A4FCA2D0E1DD800D0D97D /* VideoTopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A4FC92D0E1DD800D0D97D /* VideoTopicView.swift */; };
+		164A4FCC2D0E29E400D0D97D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A4FCB2D0E29E400D0D97D /* UIViewController+Extension.swift */; };
 		FE06FF74D18C17B8945AF7DC /* Pods_LRVideoPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC4A27419015A5C7F83C897 /* Pods_LRVideoPlayer.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		164A4FC12D0E068400D0D97D /* VideoCreatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCreatorView.swift; sourceTree = "<group>"; };
 		164A4FC52D0E178200D0D97D /* VideoViewersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewersView.swift; sourceTree = "<group>"; };
 		164A4FC92D0E1DD800D0D97D /* VideoTopicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTopicView.swift; sourceTree = "<group>"; };
+		164A4FCB2D0E29E400D0D97D /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		1BC4A27419015A5C7F83C897 /* Pods_LRVideoPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LRVideoPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46386D7BC6C360B4C8DA1CCA /* Pods-LRVideoPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LRVideoPlayer.release.xcconfig"; path = "Target Support Files/Pods-LRVideoPlayer/Pods-LRVideoPlayer.release.xcconfig"; sourceTree = "<group>"; };
 		48B568F67591CE08E51A6344 /* Pods-LRVideoPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LRVideoPlayer.debug.xcconfig"; path = "Target Support Files/Pods-LRVideoPlayer/Pods-LRVideoPlayer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				164A4FA52D0DE8F400D0D97D /* UICollectionView+Extension.swift */,
+				164A4FCB2D0E29E400D0D97D /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				164A4FB32D0DEFC200D0D97D /* CommentsView.swift in Sources */,
 				164A4FCA2D0E1DD800D0D97D /* VideoTopicView.swift in Sources */,
 				164A4F9C2D0DE69800D0D97D /* VideoCollectionViewModel.swift in Sources */,
+				164A4FCC2D0E29E400D0D97D /* UIViewController+Extension.swift in Sources */,
 				164A4F812D0DE53300D0D97D /* SceneDelegate.swift in Sources */,
 				164A4FB92D0DF30400D0D97D /* CommentCell.swift in Sources */,
 			);
