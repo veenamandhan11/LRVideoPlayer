@@ -13,7 +13,7 @@ class CommentsViewModel {
     private var timer: Timer?
 
     func loadComments(completion: @escaping (Bool) -> Void) {
-        guard let path = Bundle.main.path(forResource: "commentsMock", ofType: "json"),
+        guard let path = Bundle.main.path(forResource: "mockComments", ofType: "json"),
               let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
             print("Failed to load JSON file.")
             completion(false)

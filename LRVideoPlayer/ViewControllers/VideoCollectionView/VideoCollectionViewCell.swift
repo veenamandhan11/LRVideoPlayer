@@ -12,10 +12,12 @@ class VideoCollectionViewCell: UICollectionViewCell {
 
     private var player: AVPlayer?
     private var playerLayer: AVPlayerLayer?
+    private let overlayView = VideoOverlayView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupPlayer()
+        setupOverlayView()
     }
     
     required init?(coder: NSCoder) {
@@ -70,5 +72,16 @@ class VideoCollectionViewCell: UICollectionViewCell {
         pause()
         player = nil
         playerLayer?.player = nil
+    }
+
+    private func setupOverlayView() {
+        contentView.addSubview(overlayView)
+        overlayView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            overlayView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            overlayView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            overlayView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            overlayView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+        ])
     }
 }
