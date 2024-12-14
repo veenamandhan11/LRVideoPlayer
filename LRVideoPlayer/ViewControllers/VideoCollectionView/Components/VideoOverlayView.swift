@@ -11,6 +11,7 @@ class VideoOverlayView: UIView {
     private let creatorView = VideoCreatorView()
     private let viewsCountView = VideoViewersView()
     private let topicView = VideoTopicView()
+    private let gradientOverlay = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,6 +34,8 @@ extension VideoOverlayView {
     private func setupView() {
         let commentsView = CommentsView()
         commentsView.backgroundColor = .clear
+        
+        setupGradientBackground()
         
         addSubview(creatorView)
         addSubview(viewsCountView)
@@ -70,5 +73,16 @@ extension VideoOverlayView {
     
     @objc private func dismissKeyboard() {
         endEditing(true)
+    }
+    
+    private func setupGradientBackground() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: K.Size.screenWidth, height: 153)
+        gradientLayer.colors = [
+            UIColor.black.withAlphaComponent(0.5).cgColor,
+            UIColor.black.withAlphaComponent(0.2).cgColor,
+            UIColor.black.withAlphaComponent(0).cgColor
+        ]
+        layer.insertSublayer(gradientLayer, at: 0)
     }
 }

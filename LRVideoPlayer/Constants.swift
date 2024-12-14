@@ -15,6 +15,9 @@ enum K {
     
     enum Size {
         static let screenBounds = UIScreen.main.bounds
+        static let screenWidth = screenBounds.width
+        static let screenHeight = screenBounds.height
+        
         static let commentSectionHeight = screenBounds.height*0.4
     }
 }
