@@ -108,9 +108,90 @@ class CommentsView: UIView {
         }
     }
     
+    // MARK: - Public method
     func reset() {
         textField.text = ""
         sendImageView.isHidden = true
+    }
+}
+
+// MARK: - Table View Delegate
+extension CommentsView: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfDisplayedComments()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CommentCell.reuseIdentifier, for: indexPath) as! CommentCell
+        if let comment = viewModel.comment(at: indexPath.row) {
+            cell.configure(with: comment)
+        }
+        return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if isProgrammaticallyScrolling { return }
+        adjustCellOpacity()
+    }
+    
+    private func adjustCellOpacity() {
+        let fadeHeight = tableView.frame.height * 0.2 // Top 20% fading zone
+
+        for cell in tableView.visibleCells {
+            guard let cellFrame = cell.superview?.convert(cell.frame, to: self) else { continue }
+            let distanceFromTop = fadeHeight - cellFrame.origin.y
+
+            if distanceFromTop > 0 {
+                let alpha = max(0, 1.0 - (distanceFromTop / fadeHeight))
+                cell.alpha = alpha
+            } else {
+                cell.alpha = 1.0
+            }
+        }
+    }
+}
+
+// MARK: - TextField Delegate
+extension CommentsView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        didPressSend()
+        return false
+    }
+}
+
+// MARK: - Keyboard Activity
+extension CommentsView {
+    private func registerKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    private func unregisterKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func handleKeyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+              let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else {
+            return
+        }
+
+        let keyboardHeight = keyboardFrame.height
+        UIView.animate(withDuration: animationDuration) {
+            self.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight+8)
+        }
+    }
+
+    @objc private func handleKeyboardWillHide(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else {
+            return
+        }
+        UIView.animate(withDuration: animationDuration) {
+            self.transform = .identity
+        }
     }
 }
 
@@ -200,85 +281,5 @@ extension CommentsView {
             UIColor.black.withAlphaComponent(0.75).cgColor
         ]
         layer.insertSublayer(gradientLayer, at: 0)
-    }
-}
-
-// MARK: - Table View Delegate
-extension CommentsView: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfDisplayedComments()
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CommentCell.reuseIdentifier, for: indexPath) as! CommentCell
-        if let comment = viewModel.comment(at: indexPath.row) {
-            cell.configure(with: comment)
-        }
-        return cell
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if isProgrammaticallyScrolling { return }
-        adjustCellOpacity()
-    }
-    
-    private func adjustCellOpacity() {
-        let fadeHeight = tableView.frame.height * 0.2 // Top 20% fading zone
-
-        for cell in tableView.visibleCells {
-            guard let cellFrame = cell.superview?.convert(cell.frame, to: self) else { continue }
-            let distanceFromTop = fadeHeight - cellFrame.origin.y
-
-            if distanceFromTop > 0 {
-                let alpha = max(0, 1.0 - (distanceFromTop / fadeHeight))
-                cell.alpha = alpha
-            } else {
-                cell.alpha = 1.0
-            }
-        }
-    }
-}
-
-// MARK: - Keyboard Activity
-extension CommentsView {
-    private func registerKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-
-    private func unregisterKeyboardNotifications() {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc private func handleKeyboardWillShow(_ notification: Notification) {
-        guard let userInfo = notification.userInfo,
-              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
-              let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else {
-            return
-        }
-
-        let keyboardHeight = keyboardFrame.height
-        UIView.animate(withDuration: animationDuration) {
-            self.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight+8)
-        }
-    }
-
-    @objc private func handleKeyboardWillHide(_ notification: Notification) {
-        guard let userInfo = notification.userInfo,
-              let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else {
-            return
-        }
-        UIView.animate(withDuration: animationDuration) {
-            self.transform = .identity
-        }
-    }
-}
-
-// MARK: - TextField Delegate
-extension CommentsView: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        didPressSend()
-        return false
     }
 }
