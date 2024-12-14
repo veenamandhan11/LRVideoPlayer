@@ -12,7 +12,7 @@ class CommentsView: UIView {
     
     private let tableView = UITableView()
     private let textField = PaddedTextField(padding: UIEdgeInsets(top: 11, left: 11, bottom: 11, right: 11))
-    private let trailingImageView = UIImageView()
+    private let sendImageView = UIImageView()
     
     private var isProgrammaticallyScrolling = true
     
@@ -68,7 +68,7 @@ class CommentsView: UIView {
     
     @objc private func textFieldDidChange() {
         let hasText = !(textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true)
-        trailingImageView.image = hasText ? UIImage(systemName: "paperplane") : UIImage(named: "emoji_outline")
+        sendImageView.isHidden = !hasText
     }
     
     @objc private func didPressSend() {
@@ -76,7 +76,7 @@ class CommentsView: UIView {
         viewModel.addComment(text)
         
         textField.text = ""
-        trailingImageView.image = UIImage(named: "emoji_outline")
+        sendImageView.isHidden = true
         
         tableView.reloadData()
         scrollToBottom(animated: true)
@@ -158,21 +158,22 @@ extension CommentsView {
     }
     
     private func setupTrailingImageView() {
-        trailingImageView.image = UIImage(named: "emoji_outline")
-        trailingImageView.tintColor = .white
-        trailingImageView.contentMode = .scaleAspectFit
+        sendImageView.image = UIImage(systemName: "paperplane")
+        sendImageView.tintColor = .white
+        sendImageView.contentMode = .scaleAspectFit
+        sendImageView.isHidden = true
         
-        trailingImageView.isUserInteractionEnabled = true
+        sendImageView.isUserInteractionEnabled = true
         let sendTap = UITapGestureRecognizer(target: self, action: #selector(didPressSend))
-        trailingImageView.addGestureRecognizer(sendTap)
+        sendImageView.addGestureRecognizer(sendTap)
         
-        addSubview(trailingImageView)
-        trailingImageView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(sendImageView)
+        sendImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            trailingImageView.trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: -11),
-            trailingImageView.centerYAnchor.constraint(equalTo: textField.centerYAnchor),
-            trailingImageView.widthAnchor.constraint(equalToConstant: 18),
-            trailingImageView.heightAnchor.constraint(equalToConstant: 18),
+            sendImageView.trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: -11),
+            sendImageView.centerYAnchor.constraint(equalTo: textField.centerYAnchor),
+            sendImageView.widthAnchor.constraint(equalToConstant: 18),
+            sendImageView.heightAnchor.constraint(equalToConstant: 18),
         ])
     }
     
@@ -260,6 +261,7 @@ extension CommentsView {
     }
 }
 
+// MARK: - TextField Delegate
 extension CommentsView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         didPressSend()
