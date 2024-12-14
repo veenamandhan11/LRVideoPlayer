@@ -78,7 +78,7 @@ extension VideoCollectionViewController: UICollectionViewDelegate, UICollectionV
             fatalError("Unable to dequeue VideoCollectionViewCell")
         }
         if let video = viewModel.video(at: indexPath.item) {
-            cell.configure(with: video.video)
+            cell.configure(with: video)
         }
         return cell
     }

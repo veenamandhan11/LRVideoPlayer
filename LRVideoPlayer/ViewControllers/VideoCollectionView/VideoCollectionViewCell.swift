@@ -38,8 +38,9 @@ class VideoCollectionViewCell: UICollectionViewCell {
         playerLayer?.frame = contentView.bounds
     }
 
-    func configure(with videoURL: String) {
-        if let url = URL(string: videoURL) {
+    func configure(with video: Video) {
+        overlayView.configure(video: video)
+        if let url = video.videoURLObject {
             player = AVPlayer(url: url)
             playerLayer?.player = player
             setupLooping()

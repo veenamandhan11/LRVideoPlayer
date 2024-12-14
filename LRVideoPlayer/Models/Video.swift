@@ -18,6 +18,14 @@ struct Video: Decodable {
     let likes: Int
     let video: String
     let thumbnail: String
+    
+    var videoURLObject: URL? {
+        return URL(string: video)
+    }
+    
+    var profilePicURLObject: URL? {
+        return URL(string: profilePicURL)
+    }
 }
 
 struct VideoResponse: Decodable {

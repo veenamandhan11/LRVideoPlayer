@@ -10,6 +10,7 @@ import UIKit
 enum K {
     enum Labels {
         static let comment = "Comment"
+        static let follow = "+ Follow"
     }
     
     enum Size {
