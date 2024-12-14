@@ -13,6 +13,10 @@
 		164A4F862D0DE53300D0D97D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 164A4F852D0DE53300D0D97D /* Base */; };
 		164A4F882D0DE53500D0D97D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 164A4F872D0DE53500D0D97D /* Assets.xcassets */; };
 		164A4F8B2D0DE53500D0D97D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 164A4F8A2D0DE53500D0D97D /* Base */; };
+		164A4F952D0DE58A00D0D97D /* mockVideos.json in Resources */ = {isa = PBXBuildFile; fileRef = 164A4F932D0DE58A00D0D97D /* mockVideos.json */; };
+		164A4F962D0DE58A00D0D97D /* mockComments.json in Resources */ = {isa = PBXBuildFile; fileRef = 164A4F942D0DE58A00D0D97D /* mockComments.json */; };
+		164A4F992D0DE5D800D0D97D /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A4F982D0DE5D800D0D97D /* Video.swift */; };
+		164A4F9C2D0DE69800D0D97D /* VideoCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A4F9B2D0DE69800D0D97D /* VideoCollectionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		164A4F872D0DE53500D0D97D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		164A4F8A2D0DE53500D0D97D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		164A4F8C2D0DE53500D0D97D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		164A4F932D0DE58A00D0D97D /* mockVideos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mockVideos.json; sourceTree = "<group>"; };
+		164A4F942D0DE58A00D0D97D /* mockComments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mockComments.json; sourceTree = "<group>"; };
+		164A4F982D0DE5D800D0D97D /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		164A4F9B2D0DE69800D0D97D /* VideoCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,9 @@
 		164A4F7D2D0DE53300D0D97D /* LRVideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				164A4F922D0DE56200D0D97D /* Resources */,
+				164A4F972D0DE5C700D0D97D /* Models */,
+				164A4F9A2D0DE68600D0D97D /* ViewModels */,
 				164A4F7E2D0DE53300D0D97D /* AppDelegate.swift */,
 				164A4F802D0DE53300D0D97D /* SceneDelegate.swift */,
 				164A4F822D0DE53300D0D97D /* ViewController.swift */,
@@ -65,6 +76,31 @@
 				164A4F8C2D0DE53500D0D97D /* Info.plist */,
 			);
 			path = LRVideoPlayer;
+			sourceTree = "<group>";
+		};
+		164A4F922D0DE56200D0D97D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				164A4F942D0DE58A00D0D97D /* mockComments.json */,
+				164A4F932D0DE58A00D0D97D /* mockVideos.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		164A4F972D0DE5C700D0D97D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				164A4F982D0DE5D800D0D97D /* Video.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		164A4F9A2D0DE68600D0D97D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				164A4F9B2D0DE69800D0D97D /* VideoCollectionViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +164,8 @@
 				164A4F882D0DE53500D0D97D /* Assets.xcassets in Resources */,
 				164A4F8B2D0DE53500D0D97D /* Base in Resources */,
 				164A4F862D0DE53300D0D97D /* Base in Resources */,
+				164A4F952D0DE58A00D0D97D /* mockVideos.json in Resources */,
+				164A4F962D0DE58A00D0D97D /* mockComments.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +177,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				164A4F832D0DE53300D0D97D /* ViewController.swift in Sources */,
+				164A4F992D0DE5D800D0D97D /* Video.swift in Sources */,
 				164A4F7F2D0DE53300D0D97D /* AppDelegate.swift in Sources */,
+				164A4F9C2D0DE69800D0D97D /* VideoCollectionViewModel.swift in Sources */,
 				164A4F812D0DE53300D0D97D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,7 +332,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WGVB2V28HN;
+				DEVELOPMENT_TEAM = 76AH7SX6WS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LRVideoPlayer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -320,7 +360,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WGVB2V28HN;
+				DEVELOPMENT_TEAM = 76AH7SX6WS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LRVideoPlayer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
