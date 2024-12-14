@@ -25,6 +25,7 @@
 		164A4FAD2D0DEA6B00D0D97D /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A4FAC2D0DEA6B00D0D97D /* CommentsViewModel.swift */; };
 		164A4FB02D0DEF9200D0D97D /* VideoOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A4FAF2D0DEF9200D0D97D /* VideoOverlayView.swift */; };
 		164A4FB32D0DEFC200D0D97D /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A4FB22D0DEFC200D0D97D /* CommentsView.swift */; };
+		FE06FF74D18C17B8945AF7DC /* Pods_LRVideoPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC4A27419015A5C7F83C897 /* Pods_LRVideoPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,9 @@
 		164A4FAC2D0DEA6B00D0D97D /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
 		164A4FAF2D0DEF9200D0D97D /* VideoOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoOverlayView.swift; sourceTree = "<group>"; };
 		164A4FB22D0DEFC200D0D97D /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		1BC4A27419015A5C7F83C897 /* Pods_LRVideoPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LRVideoPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		46386D7BC6C360B4C8DA1CCA /* Pods-LRVideoPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LRVideoPlayer.release.xcconfig"; path = "Target Support Files/Pods-LRVideoPlayer/Pods-LRVideoPlayer.release.xcconfig"; sourceTree = "<group>"; };
+		48B568F67591CE08E51A6344 /* Pods-LRVideoPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LRVideoPlayer.debug.xcconfig"; path = "Target Support Files/Pods-LRVideoPlayer/Pods-LRVideoPlayer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE06FF74D18C17B8945AF7DC /* Pods_LRVideoPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +71,8 @@
 			children = (
 				164A4F7D2D0DE53300D0D97D /* LRVideoPlayer */,
 				164A4F7C2D0DE53300D0D97D /* Products */,
+				57490DE20ACAF42EACB2D7F2 /* Pods */,
+				A18A011B0A77D0CEAD17CADE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,6 +182,23 @@
 			path = CommentSection;
 			sourceTree = "<group>";
 		};
+		57490DE20ACAF42EACB2D7F2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				48B568F67591CE08E51A6344 /* Pods-LRVideoPlayer.debug.xcconfig */,
+				46386D7BC6C360B4C8DA1CCA /* Pods-LRVideoPlayer.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A18A011B0A77D0CEAD17CADE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1BC4A27419015A5C7F83C897 /* Pods_LRVideoPlayer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -182,9 +206,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 164A4F8F2D0DE53500D0D97D /* Build configuration list for PBXNativeTarget "LRVideoPlayer" */;
 			buildPhases = (
+				D719EFD61A9E46C142E81E3F /* [CP] Check Pods Manifest.lock */,
 				164A4F772D0DE53300D0D97D /* Sources */,
 				164A4F782D0DE53300D0D97D /* Frameworks */,
 				164A4F792D0DE53300D0D97D /* Resources */,
+				5BB0492879A35F63B5BB7C1C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -242,6 +268,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5BB0492879A35F63B5BB7C1C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LRVideoPlayer/Pods-LRVideoPlayer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LRVideoPlayer/Pods-LRVideoPlayer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LRVideoPlayer/Pods-LRVideoPlayer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D719EFD61A9E46C142E81E3F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LRVideoPlayer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		164A4F772D0DE53300D0D97D /* Sources */ = {
@@ -407,12 +475,14 @@
 		};
 		164A4F902D0DE53500D0D97D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48B568F67591CE08E51A6344 /* Pods-LRVideoPlayer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 76AH7SX6WS;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LRVideoPlayer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -435,12 +505,14 @@
 		};
 		164A4F912D0DE53500D0D97D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46386D7BC6C360B4C8DA1CCA /* Pods-LRVideoPlayer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 76AH7SX6WS;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LRVideoPlayer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

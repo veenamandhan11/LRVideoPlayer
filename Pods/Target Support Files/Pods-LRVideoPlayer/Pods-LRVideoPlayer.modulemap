@@ -1,0 +1,6 @@
+framework module Pods_LRVideoPlayer {
+  umbrella header "Pods-LRVideoPlayer-umbrella.h"
+
+  export *
+  module * { export * }
+}
