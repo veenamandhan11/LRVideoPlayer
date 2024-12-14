@@ -11,7 +11,7 @@ class CommentsViewModel {
     private(set) var comments: [Comment] = []
     private(set) var displayedComments: [Comment] = []
     private var timer: Timer?
-
+    
     func loadComments(completion: @escaping (Bool) -> Void) {
         guard let path = Bundle.main.path(forResource: "mockComments", ofType: "json"),
               let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
@@ -29,12 +29,12 @@ class CommentsViewModel {
             completion(false)
         }
     }
-
+    
     func comment(at index: Int) -> Comment? {
         guard index >= 0 && index < displayedComments.count else { return nil }
         return displayedComments[index]
     }
-
+    
     func numberOfDisplayedComments() -> Int {
         return displayedComments.count
     }

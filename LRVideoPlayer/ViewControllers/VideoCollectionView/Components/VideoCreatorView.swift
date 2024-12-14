@@ -29,6 +29,13 @@ class VideoCreatorView: LRContainerView {
         usernameLabel.text = username
         likesLabel.text = "\(likes)"
     }
+    
+    func reset() {
+        picImageView.image = nil
+        usernameLabel.text = ""
+        likesLabel.text = ""
+        followButton.setTitle(K.Labels.follow, for: .normal)
+    }
 }
 
 // MARK: - Setup

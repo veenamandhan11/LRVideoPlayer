@@ -13,7 +13,7 @@ protocol CommentsViewDelegate: AnyObject {
 
 class CommentsView: UIView {
     weak var delegate: CommentsViewDelegate?
-    private let viewModel = CommentsViewModel()
+    private var viewModel = CommentsViewModel()
     
     private let tableView = UITableView()
     private let textField = PaddedTextField(padding: UIEdgeInsets(top: 11, left: 11, bottom: 11, right: 11))
@@ -106,6 +106,11 @@ class CommentsView: UIView {
         } else {
             tableView.contentInset = newInset
         }
+    }
+    
+    func reset() {
+        textField.text = ""
+        sendImageView.isHidden = true
     }
 }
 

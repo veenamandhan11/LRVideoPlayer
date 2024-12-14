@@ -23,6 +23,10 @@ class VideoViewersView: LRContainerView {
     func configure(viewsCount: Int) {
         countLabel.text = "\(viewsCount)"
     }
+    
+    func reset() {
+        countLabel.text = "0"
+    }
 }
 
 // MARK: - Setup

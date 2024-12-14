@@ -73,6 +73,8 @@ class VideoCollectionViewCell: UICollectionViewCell {
         pause()
         player = nil
         playerLayer?.player = nil
+        NotificationCenter.default.removeObserver(self)
+        overlayView.reset()
     }
 
     private func setupOverlayView() {

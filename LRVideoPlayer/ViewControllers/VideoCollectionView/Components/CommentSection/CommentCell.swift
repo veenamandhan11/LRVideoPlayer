@@ -29,6 +29,14 @@ class CommentCell: UITableViewCell {
         commentLabel.text = comment.comment
         picImageView.kf.setImage(with: comment.picURLObject)
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        picImageView.kf.cancelDownloadTask()
+        picImageView.image = nil
+        usernameLabel.text = nil
+        commentLabel.text = nil
+    }
 }
 
 // MARK: - UI Setup

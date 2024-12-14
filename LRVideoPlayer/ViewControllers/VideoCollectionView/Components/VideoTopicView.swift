@@ -23,6 +23,10 @@ class VideoTopicView: LRContainerView {
     func configure(topic: String) {
         topicLabel.text = topic.capitalized
     }
+    
+    func reset() {
+        topicLabel.text = ""
+    }
 }
 
 // MARK: - Setup

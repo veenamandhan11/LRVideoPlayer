@@ -9,6 +9,7 @@ import UIKit
 
 class VideoOverlayView: UIView {
     private let creatorView = VideoCreatorView()
+    private let commentsView = CommentsView()
     private let viewsCountView = VideoViewersView()
     private let topicView = VideoTopicView()
     
@@ -26,12 +27,18 @@ class VideoOverlayView: UIView {
         viewsCountView.configure(viewsCount: video.viewers)
         topicView.configure(topic: video.topic)
     }
+    
+    func reset() {
+        creatorView.reset()
+        commentsView.reset()
+        viewsCountView.reset()
+        topicView.reset()
+    }
 }
 
 // MARK: - UI Setup
 extension VideoOverlayView {
     private func setupView() {
-        let commentsView = CommentsView()
         commentsView.backgroundColor = .clear
         
         setupGradientBackground()
