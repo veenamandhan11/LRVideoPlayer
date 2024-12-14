@@ -20,6 +20,7 @@
 		164A4F9F2D0DE7BA00D0D97D /* VideoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A4F9E2D0DE7BA00D0D97D /* VideoCollectionViewController.swift */; };
 		164A4FA22D0DE7FA00D0D97D /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A4FA12D0DE7FA00D0D97D /* VideoCollectionViewCell.swift */; };
 		164A4FA62D0DE8F400D0D97D /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A4FA52D0DE8F400D0D97D /* UICollectionView+Extension.swift */; };
+		164A4FA92D0DE99500D0D97D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A4FA82D0DE99500D0D97D /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		164A4F9E2D0DE7BA00D0D97D /* VideoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewController.swift; sourceTree = "<group>"; };
 		164A4FA12D0DE7FA00D0D97D /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		164A4FA52D0DE8F400D0D97D /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		164A4FA82D0DE99500D0D97D /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				164A4F9A2D0DE68600D0D97D /* ViewModels */,
 				164A4F9D2D0DE7A400D0D97D /* ViewControllers */,
 				164A4FA42D0DE8D600D0D97D /* Extensions */,
+				164A4FA72D0DE98400D0D97D /* Utilities */,
 				164A4F7E2D0DE53300D0D97D /* AppDelegate.swift */,
 				164A4F802D0DE53300D0D97D /* SceneDelegate.swift */,
 				164A4F822D0DE53300D0D97D /* ViewController.swift */,
@@ -134,6 +137,14 @@
 				164A4FA52D0DE8F400D0D97D /* UICollectionView+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		164A4FA72D0DE98400D0D97D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				164A4FA82D0DE99500D0D97D /* Utilities.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +226,7 @@
 				164A4F832D0DE53300D0D97D /* ViewController.swift in Sources */,
 				164A4F992D0DE5D800D0D97D /* Video.swift in Sources */,
 				164A4F7F2D0DE53300D0D97D /* AppDelegate.swift in Sources */,
+				164A4FA92D0DE99500D0D97D /* Utilities.swift in Sources */,
 				164A4F9C2D0DE69800D0D97D /* VideoCollectionViewModel.swift in Sources */,
 				164A4F812D0DE53300D0D97D /* SceneDelegate.swift in Sources */,
 			);
