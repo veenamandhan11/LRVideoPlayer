@@ -10,6 +10,7 @@ import UIKit
 class VideoOverlayView: UIView {
     private let creatorView = VideoCreatorView()
     private let viewsCountView = VideoViewersView()
+    private let topicView = VideoTopicView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,6 +24,7 @@ class VideoOverlayView: UIView {
     func configure(video: Video) {
         creatorView.configure(profileImageURL: video.profilePicURLObject, username: video.username, likes: video.likes)
         viewsCountView.configure(viewsCount: video.viewers)
+        topicView.configure(topic: video.topic)
     }
 }
 
@@ -34,9 +36,11 @@ extension VideoOverlayView {
         
         addSubview(creatorView)
         addSubview(viewsCountView)
+        addSubview(topicView)
         addSubview(commentsView)
         
         creatorView.translatesAutoresizingMaskIntoConstraints = false
+        topicView.translatesAutoresizingMaskIntoConstraints = false
         commentsView.translatesAutoresizingMaskIntoConstraints = false
         viewsCountView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -44,6 +48,10 @@ extension VideoOverlayView {
             creatorView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
             creatorView.trailingAnchor.constraint(lessThanOrEqualTo: viewsCountView.leadingAnchor, constant: -16),
             creatorView.heightAnchor.constraint(equalToConstant: 26),
+            
+            topicView.leadingAnchor.constraint(equalTo: creatorView.leadingAnchor),
+            topicView.topAnchor.constraint(equalTo: creatorView.bottomAnchor, constant: 6),
+            topicView.heightAnchor.constraint(equalToConstant: 15),
             
             viewsCountView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             viewsCountView.centerYAnchor.constraint(equalTo: creatorView.centerYAnchor),

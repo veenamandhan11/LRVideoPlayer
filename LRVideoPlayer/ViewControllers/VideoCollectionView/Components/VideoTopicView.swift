@@ -1,5 +1,5 @@
 //
-//  VideoViewersView.swift
+//  VideoTopicView.swift
 //  LRVideoPlayer
 //
 //  Created by Veena on 15/12/24.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class VideoViewersView: LRContainerView {
+class VideoTopicView: LRContainerView {
     private let iconImageView = UIImageView()
-    private let countLabel = UILabel()
+    private let topicLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,30 +20,30 @@ class VideoViewersView: LRContainerView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(viewsCount: Int) {
-        countLabel.text = "\(viewsCount)"
+    func configure(topic: String) {
+        topicLabel.text = topic.capitalized
     }
 }
 
 // MARK: - Setup
-extension VideoViewersView {
+extension VideoTopicView {
     private func setupView() {
         layer.cornerRadius = 6
         clipsToBounds = true
         
-        iconImageView.image = UIImage(named: "person")
+        iconImageView.image = UIImage(named: "star_comment")
         iconImageView.contentMode = .scaleAspectFit
         iconImageView.tintColor = .containerForeground
         
-        countLabel.font = UIFont.systemFont(ofSize: 10, weight: .medium)
-        countLabel.textColor = .containerForeground
+        topicLabel.font = UIFont.systemFont(ofSize: 10, weight: .regular)
+        topicLabel.textColor = .white
         
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 1
+        stackView.spacing = 3
         stackView.alignment = .center
         stackView.addArrangedSubview(iconImageView)
-        stackView.addArrangedSubview(countLabel)
+        stackView.addArrangedSubview(topicLabel)
         
         addSubview(stackView)
         
@@ -51,11 +51,11 @@ extension VideoViewersView {
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             iconImageView.widthAnchor.constraint(equalToConstant: 11),
-            iconImageView.heightAnchor.constraint(equalToConstant: 10),
+            iconImageView.heightAnchor.constraint(equalToConstant: 11),
             
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 6),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -6),
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 3),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 2),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2)
         ])
     }
