@@ -9,6 +9,7 @@ import UIKit
 
 class VideoOverlayView: UIView {
     private let creatorView = VideoCreatorView()
+    private let viewsCountView = VideoViewersView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,6 +22,7 @@ class VideoOverlayView: UIView {
     
     func configure(video: Video) {
         creatorView.configure(profileImageURL: video.profilePicURLObject, username: video.username, likes: video.likes)
+        viewsCountView.configure(viewsCount: video.viewers)
     }
 }
 
@@ -31,15 +33,21 @@ extension VideoOverlayView {
         commentsView.backgroundColor = .clear
         
         addSubview(creatorView)
+        addSubview(viewsCountView)
         addSubview(commentsView)
         
         creatorView.translatesAutoresizingMaskIntoConstraints = false
         commentsView.translatesAutoresizingMaskIntoConstraints = false
+        viewsCountView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             creatorView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             creatorView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
-            creatorView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -16),
+            creatorView.trailingAnchor.constraint(lessThanOrEqualTo: viewsCountView.leadingAnchor, constant: -16),
             creatorView.heightAnchor.constraint(equalToConstant: 26),
+            
+            viewsCountView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            viewsCountView.centerYAnchor.constraint(equalTo: creatorView.centerYAnchor),
+            viewsCountView.heightAnchor.constraint(equalToConstant: 15),
             
             commentsView.leadingAnchor.constraint(equalTo: leadingAnchor),
             commentsView.trailingAnchor.constraint(equalTo: trailingAnchor),

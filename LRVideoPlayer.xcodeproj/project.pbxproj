@@ -30,6 +30,7 @@
 		164A4FBE2D0DF40E00D0D97D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A4FBD2D0DF40E00D0D97D /* Constants.swift */; };
 		164A4FC02D0E05F100D0D97D /* LRContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A4FBF2D0E05F100D0D97D /* LRContainerView.swift */; };
 		164A4FC22D0E068400D0D97D /* VideoCreatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A4FC12D0E068400D0D97D /* VideoCreatorView.swift */; };
+		164A4FC62D0E178200D0D97D /* VideoViewersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A4FC52D0E178200D0D97D /* VideoViewersView.swift */; };
 		FE06FF74D18C17B8945AF7DC /* Pods_LRVideoPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC4A27419015A5C7F83C897 /* Pods_LRVideoPlayer.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		164A4FBD2D0DF40E00D0D97D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		164A4FBF2D0E05F100D0D97D /* LRContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRContainerView.swift; sourceTree = "<group>"; };
 		164A4FC12D0E068400D0D97D /* VideoCreatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCreatorView.swift; sourceTree = "<group>"; };
+		164A4FC52D0E178200D0D97D /* VideoViewersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewersView.swift; sourceTree = "<group>"; };
 		1BC4A27419015A5C7F83C897 /* Pods_LRVideoPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LRVideoPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46386D7BC6C360B4C8DA1CCA /* Pods-LRVideoPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LRVideoPlayer.release.xcconfig"; path = "Target Support Files/Pods-LRVideoPlayer/Pods-LRVideoPlayer.release.xcconfig"; sourceTree = "<group>"; };
 		48B568F67591CE08E51A6344 /* Pods-LRVideoPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LRVideoPlayer.debug.xcconfig"; path = "Target Support Files/Pods-LRVideoPlayer/Pods-LRVideoPlayer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				164A4FAF2D0DEF9200D0D97D /* VideoOverlayView.swift */,
 				164A4FC12D0E068400D0D97D /* VideoCreatorView.swift */,
 				164A4FB12D0DEFAF00D0D97D /* CommentSection */,
+				164A4FC52D0E178200D0D97D /* VideoViewersView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				164A4FAD2D0DEA6B00D0D97D /* CommentsViewModel.swift in Sources */,
 				164A4FC02D0E05F100D0D97D /* LRContainerView.swift in Sources */,
 				164A4FA92D0DE99500D0D97D /* Utilities.swift in Sources */,
+				164A4FC62D0E178200D0D97D /* VideoViewersView.swift in Sources */,
 				164A4FB32D0DEFC200D0D97D /* CommentsView.swift in Sources */,
 				164A4F9C2D0DE69800D0D97D /* VideoCollectionViewModel.swift in Sources */,
 				164A4F812D0DE53300D0D97D /* SceneDelegate.swift in Sources */,
