@@ -285,9 +285,9 @@ extension CommentsView {
         sendImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             sendImageView.trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: -11),
-            sendImageView.centerYAnchor.constraint(equalTo: textField.centerYAnchor),
-            sendImageView.widthAnchor.constraint(equalToConstant: 18),
-            sendImageView.heightAnchor.constraint(equalToConstant: 18),
+            sendImageView.widthAnchor.constraint(equalToConstant: 22),
+            sendImageView.topAnchor.constraint(equalTo: textField.topAnchor),
+            sendImageView.bottomAnchor.constraint(equalTo: textField.bottomAnchor),
         ])
     }
     
