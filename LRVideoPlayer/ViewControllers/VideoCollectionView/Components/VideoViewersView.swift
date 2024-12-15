@@ -29,7 +29,7 @@ class VideoViewersView: LRContainerView {
     }
 }
 
-// MARK: - Setup
+// MARK: - UI Setup
 extension VideoViewersView {
     private func setupView() {
         layer.cornerRadius = 6

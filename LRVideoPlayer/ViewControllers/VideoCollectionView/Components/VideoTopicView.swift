@@ -29,7 +29,7 @@ class VideoTopicView: LRContainerView {
     }
 }
 
-// MARK: - Setup
+// MARK: - UI Setup
 extension VideoTopicView {
     private func setupView() {
         layer.cornerRadius = 6
