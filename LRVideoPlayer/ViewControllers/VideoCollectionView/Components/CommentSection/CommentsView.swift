@@ -50,14 +50,27 @@ class CommentsView: UIView {
                 if success {
                     self.viewModel?.startAddingComments { [weak self] in
                         self?.tableView.reloadData()
+                        self?.scrollToBottomIfNeeded(animated: true)
                         self?.alignTableViewToBottom()
-                        self?.scrollToBottom(animated: true)
                     }
                 } else {
                     self.delegate?.showToastMessage(K.Errors.failedToLoadComments)
                 }
             }
         }
+    }
+    
+    private func isTableViewAtBottom() -> Bool {
+        let offsetY = tableView.contentOffset.y
+        let contentHeight = tableView.contentSize.height
+        let tableHeight = tableView.bounds.size.height
+        return contentHeight - tableHeight - offsetY <= 100
+    }
+    
+    private func scrollToBottomIfNeeded(animated: Bool) {
+        // If user has scrolled up manually, then don't scroll to bottom
+        guard isTableViewAtBottom() else { return }
+        scrollToBottom(animated: animated)
     }
     
     private func scrollToBottom(animated: Bool) {
@@ -107,7 +120,7 @@ class CommentsView: UIView {
         }
     }
     
-    func resetTableViewInset() {
+    private func resetTableViewInset() {
         let safeAreaInsetsBottom = K.safeAreaInsets?.bottom ?? 0
         let textFieldHeight: CGFloat = 34
         let tableViewBottomInset: CGFloat = 16
