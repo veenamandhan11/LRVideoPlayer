@@ -18,9 +18,16 @@ enum K {
         static let follow = "+ Follow"
     }
     
+    enum Placeholder {
+        static let username = "anonymous"
+        static let profilePicUrl = "https://i.sstatic.net/l60Hf.png"
+    }
+    
     enum Errors {
         static let failedToLoadVideos = "Failed to load videos"
         static let failedToLoadComments = "Failed to load comments"
+        static let failedToLoadJson = "Failed to load JSON file."
+        static let errorDecodingJson = "Error decoding JSON."
     }
     
     enum Size {
@@ -29,5 +36,24 @@ enum K {
         static let screenHeight = screenBounds.height
         
         static let commentSectionHeight = screenBounds.height*0.4
+    }
+    
+    enum Jsons {
+        static let mockVideos = "mockVideos"
+        static let mockComments = "mockComments"
+    }
+    
+    enum CellIdentifiers {
+        static let videoCollectionViewCell = "VideoCollectionViewCell"
+        static let commentCell = "CommentCell"
+    }
+    
+    enum Images {
+        static let likeIcon = UIImage(named: "like_icon")
+        static let person = UIImage(named: "person")
+        static let starComment = UIImage(named: "star_comment")
+        
+        // System images
+        static let paperplane = UIImage(systemName: "paperplane")
     }
 }

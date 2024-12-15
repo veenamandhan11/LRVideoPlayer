@@ -52,7 +52,7 @@ extension VideoCreatorView {
         usernameLabel.textColor = .containerForeground
         
         likeImageView.contentMode = .scaleAspectFit
-        likeImageView.image = UIImage(named: "like_icon")
+        likeImageView.image = K.Images.likeIcon
         likeImageView.tintColor = .containerForeground
         
         likesLabel.font = UIFont.systemFont(ofSize: 10, weight: .medium)

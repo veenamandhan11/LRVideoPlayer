@@ -11,9 +11,9 @@ class VideoCollectionViewModel {
     private(set) var videos: [Video] = []
     
     func loadVideos(completion: @escaping (Bool) -> Void) {
-        guard let path = Bundle.main.path(forResource: "mockVideos", ofType: "json"),
+        guard let path = Bundle.main.path(forResource: K.Jsons.mockVideos, ofType: "json"),
               let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
-            print("Failed to load JSON file.")
+            print(K.Errors.failedToLoadJson)
             completion(false)
             return
         }
@@ -22,7 +22,7 @@ class VideoCollectionViewModel {
             self.videos = videoResponse.videos
             completion(true)
         } catch {
-            print("Error decoding JSON: \(error)")
+            print("\(K.Errors.errorDecodingJson): \(error)")
             completion(false)
         }
     }

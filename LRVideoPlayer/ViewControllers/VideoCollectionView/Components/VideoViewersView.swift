@@ -35,7 +35,7 @@ extension VideoViewersView {
         layer.cornerRadius = 6
         clipsToBounds = true
         
-        iconImageView.image = UIImage(named: "person")
+        iconImageView.image = K.Images.person
         iconImageView.contentMode = .scaleAspectFit
         iconImageView.tintColor = .containerForeground
         

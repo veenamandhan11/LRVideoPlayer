@@ -35,7 +35,7 @@ extension VideoTopicView {
         layer.cornerRadius = 6
         clipsToBounds = true
         
-        iconImageView.image = UIImage(named: "star_comment")
+        iconImageView.image = K.Images.starComment
         iconImageView.contentMode = .scaleAspectFit
         iconImageView.tintColor = .containerForeground
         

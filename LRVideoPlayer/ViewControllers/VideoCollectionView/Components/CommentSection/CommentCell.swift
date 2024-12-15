@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 class CommentCell: UITableViewCell {
-    static let reuseIdentifier = "CommentCell"
+    static let reuseIdentifier = K.CellIdentifiers.commentCell
     
     private let usernameLabel = UILabel()
     private let commentLabel = UILabel()

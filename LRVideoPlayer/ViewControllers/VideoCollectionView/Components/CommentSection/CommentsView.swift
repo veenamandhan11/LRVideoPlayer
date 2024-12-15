@@ -272,7 +272,7 @@ extension CommentsView {
     }
     
     private func setupTrailingImageView() {
-        sendImageView.image = UIImage(systemName: "paperplane")
+        sendImageView.image = K.Images.paperplane
         sendImageView.tintColor = .white
         sendImageView.contentMode = .scaleAspectFit
         sendImageView.isHidden = true

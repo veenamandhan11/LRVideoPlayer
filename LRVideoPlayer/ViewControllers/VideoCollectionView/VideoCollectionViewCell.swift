@@ -8,7 +8,7 @@
 import AVKit
 
 class VideoCollectionViewCell: UICollectionViewCell {
-    static let identifier = "VideoCollectionViewCell"
+    static let identifier = K.CellIdentifiers.videoCollectionViewCell
 
     private var player: AVPlayer?
     private var playerLayer: AVPlayerLayer?

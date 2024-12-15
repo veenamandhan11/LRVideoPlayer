@@ -13,9 +13,9 @@ class CommentsViewModel {
     private var timer: Timer?
     
     func loadComments(completion: @escaping (Bool) -> Void) {
-        guard let path = Bundle.main.path(forResource: "mockComments", ofType: "json"),
+        guard let path = Bundle.main.path(forResource: K.Jsons.mockComments, ofType: "json"),
               let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
-            print("Failed to load JSON file.")
+            print(K.Errors.failedToLoadJson)
             completion(false)
             return
         }
@@ -25,7 +25,7 @@ class CommentsViewModel {
             self.comments = commentResponse.comments
             completion(true)
         } catch {
-            print("Error decoding JSON: \(error)")
+            print("\(K.Errors.errorDecodingJson): \(error)")
             completion(false)
         }
     }
@@ -40,7 +40,7 @@ class CommentsViewModel {
     }
     
     func addComment(_ commentText: String) {
-        let newComment = Comment(id: 1800 + comments.count, username: "anonymous", picURL: "https://i.sstatic.net/l60Hf.png", comment: commentText)
+        let newComment = Comment(id: 1800 + comments.count, username: K.Placeholder.username, picURL: K.Placeholder.profilePicUrl, comment: commentText)
         displayedComments.append(newComment)
     }
 }

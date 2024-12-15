@@ -74,9 +74,7 @@ extension VideoCollectionViewController: UICollectionViewDelegate, UICollectionV
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCollectionViewCell.identifier, for: indexPath) as? VideoCollectionViewCell else {
-            fatalError("Unable to dequeue VideoCollectionViewCell")
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCollectionViewCell.identifier, for: indexPath) as! VideoCollectionViewCell
         if let video = viewModel.video(at: indexPath.item) {
             cell.configure(with: video)
         }
