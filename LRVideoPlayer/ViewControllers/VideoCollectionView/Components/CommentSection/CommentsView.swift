@@ -60,34 +60,6 @@ class CommentsView: UIView {
         }
     }
     
-    private func isTableViewAtBottom() -> Bool {
-        let offsetY = tableView.contentOffset.y
-        let contentHeight = tableView.contentSize.height
-        let tableHeight = tableView.bounds.size.height
-        return contentHeight - tableHeight - offsetY <= 100
-    }
-    
-    private func scrollToBottomIfNeeded(animated: Bool) {
-        // If user has scrolled up manually, then don't scroll to bottom
-        guard isTableViewAtBottom() else { return }
-        scrollToBottom(animated: animated)
-    }
-    
-    private func scrollToBottom(animated: Bool) {
-        let lastRow = tableView.numberOfRows(inSection: 0) - 1
-        if lastRow >= 0 {
-            isProgrammaticallyScrolling = true
-            tableView.scrollToRow(at: IndexPath(row: lastRow, section: 0), at: .bottom, animated: animated)
-            isProgrammaticallyScrolling = false
-            adjustCellOpacity()
-        }
-    }
-    
-    @objc private func textFieldDidChange() {
-        let hasText = !(textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true)
-        sendImageView.isHidden = !hasText
-    }
-    
     @objc private func didPressSend() {
         guard let text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !text.isEmpty else { return }
         viewModel?.addComment(text)
@@ -97,37 +69,6 @@ class CommentsView: UIView {
         
         tableView.reloadData()
         scrollToBottom(animated: true)
-    }
-    
-    private func alignTableViewToBottom(animated: Bool = true) {
-        let contentHeight = tableView.contentSize.height
-        let tableHeight = tableView.bounds.height
-        
-        let newTopInset: CGFloat
-        if contentHeight < tableHeight {
-            newTopInset = tableHeight - contentHeight
-        } else {
-            newTopInset = 64
-        }
-        let newInset = UIEdgeInsets(top: newTopInset, left: 0, bottom: 16, right: 0)
-        if animated {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.tableView.contentInset = newInset
-                self.tableView.layoutIfNeeded()
-            })
-        } else {
-            tableView.contentInset = newInset
-        }
-    }
-    
-    private func resetTableViewInset() {
-        let safeAreaInsetsBottom = K.safeAreaInsets?.bottom ?? 0
-        let textFieldHeight: CGFloat = 34
-        let tableViewBottomInset: CGFloat = 16
-        let tableViewTopInset: CGFloat = 64
-        let maxTop = K.Size.screenHeight - safeAreaInsetsBottom - textFieldHeight - tableViewBottomInset - tableViewTopInset
-        
-        tableView.contentInset = UIEdgeInsets(top: maxTop, left: 0, bottom: tableViewBottomInset, right: 0)
     }
     
     // MARK: - Public methods
@@ -266,6 +207,8 @@ extension CommentsView {
         
         // User-entered text font
         textField.font = UIFont.systemFont(ofSize: 11, weight: .regular)
+        textField.textColor = .white
+        textField.tintColor = .white
         
         textField.layer.cornerRadius = 17
         textField.backgroundColor = .commentTextField
@@ -313,5 +256,67 @@ extension CommentsView {
             UIColor.black.withAlphaComponent(0.75).cgColor
         ]
         layer.insertSublayer(gradientLayer, at: 0)
+    }
+}
+
+// MARK: - UI Helpers
+extension CommentsView {
+    private func isTableViewAtBottom() -> Bool {
+        let offsetY = tableView.contentOffset.y
+        let contentHeight = tableView.contentSize.height
+        let tableHeight = tableView.bounds.size.height
+        return contentHeight - tableHeight - offsetY <= 100
+    }
+    
+    private func scrollToBottomIfNeeded(animated: Bool) {
+        // If user has scrolled up manually, then don't scroll to bottom
+        guard isTableViewAtBottom() else { return }
+        scrollToBottom(animated: animated)
+    }
+    
+    private func scrollToBottom(animated: Bool) {
+        let lastRow = tableView.numberOfRows(inSection: 0) - 1
+        if lastRow >= 0 {
+            isProgrammaticallyScrolling = true
+            tableView.scrollToRow(at: IndexPath(row: lastRow, section: 0), at: .bottom, animated: animated)
+            isProgrammaticallyScrolling = false
+            adjustCellOpacity()
+        }
+    }
+    
+    @objc private func textFieldDidChange() {
+        let hasText = !(textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true)
+        sendImageView.isHidden = !hasText
+    }
+    
+    private func alignTableViewToBottom(animated: Bool = true) {
+        let contentHeight = tableView.contentSize.height
+        let tableHeight = tableView.bounds.height
+        
+        let newTopInset: CGFloat
+        if contentHeight < tableHeight {
+            newTopInset = tableHeight - contentHeight
+        } else {
+            newTopInset = 64
+        }
+        let newInset = UIEdgeInsets(top: newTopInset, left: 0, bottom: 16, right: 0)
+        if animated {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.tableView.contentInset = newInset
+                self.tableView.layoutIfNeeded()
+            })
+        } else {
+            tableView.contentInset = newInset
+        }
+    }
+    
+    private func resetTableViewInset() {
+        let safeAreaInsetsBottom = K.safeAreaInsets?.bottom ?? 0
+        let textFieldHeight: CGFloat = 34
+        let tableViewBottomInset: CGFloat = 16
+        let tableViewTopInset: CGFloat = 64
+        let maxTop = K.Size.screenHeight - safeAreaInsetsBottom - textFieldHeight - tableViewBottomInset - tableViewTopInset
+        
+        tableView.contentInset = UIEdgeInsets(top: maxTop, left: 0, bottom: tableViewBottomInset, right: 0)
     }
 }
